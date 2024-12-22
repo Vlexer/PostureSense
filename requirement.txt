@@ -1,0 +1,19 @@
+# Core dependencies
+tkinter
+Pillow
+customtkinter
+
+# Data processing and visualization
+matplotlib
+numpy
+pandas
+opencv-python
+
+# Google OAuth and API
+google-auth-oauthlib
+google-auth
+google-api-python-client
+requests
+
+# Optional but recommended
+python-dotenv
