@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SitApp - Improve Your Posture</title>
+    <style>
+        :root {
+            --primary-color: #FF8A3D;
+            --text-color: #4A4B65;
+            --background-color: #FFF5F2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            height: 32px;
+        }
+
+        .download-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #e67a35;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 4rem 0;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #2D2E3E;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .features {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonials {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: left;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .faq {
+            padding: 4rem 0;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .faq-item h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item h3::after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .feature-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        .faq {
+            padding: 4rem 0;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .faq-item h3::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-top: 0;
+        }
+
+        .faq-item.active {
+            background: #fff5f2;
+        }
+
+        .faq-item.active h3::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 200px;
+            margin-top: 1rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h2 {
+            font-size: 1.5rem;
+            color: #2D2E3E;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .app-name {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="logo.svg" alt="SitApp Logo">
+                SitApp
+            </div>
+            <a href="#" class="download-btn">Download</a>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Improve your seated posture today</h1>
+                <p>SitApp is a FREE desktop app that monitors your posture and reminds you to sit up straight.</p>
+                <a href="#" class="download-btn">Improve my posture</a>
+            </div>
+            <div class="hero-image">
+                <img src="hero-illustration.svg" alt="Person sitting at desk with good posture">
+            </div>
+        </section>
+        <section class="features-grid">
+            <div class="feature-card">
+                <h2>Easy to use</h2>
+                <p>Download <span class="app-name">SitApp</span>, follow a few simple setup steps to recognise your working space and posture, and you're away.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>Improve</h2>
+                <p>Track your progress and see your posture improvements over time. Change how you feel about sitting.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>Privacy first</h2>
+                <p><span class="app-name">SitApp</span> is built with your privacy in mind. No images are ever stored or transferred, so you can have complete peace of mind.</p>
+            </div>
+        </section>
+
+        <!-- Add this section for the slouch explanation -->
+        <section class="slouch-section">
+            <div class="slouch-content">
+                <h2>Slouch much?</h2>
+                <p>Slouching in front of a laptop all day isn't great for your body and over time can lead to muscle tension, dysfunction and pain.</p>
+                <p>Enter <span class="app-name">SitApp</span> — a simple way to help you establish better posture habits.</p>
+                <p><span class="app-name">SitApp</span> monitors your posture in real time and reminds you to sit up straight when you start to slouch.</p>
+                <p>It's that easy. Better posture – happier body!</p>
+                <a href="#" class="download-btn">Try it out</a>
+            </div>
+        </section>
+        <section class="features">
+            <h2>Slouch much?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <p>Slouching in front of a laptop all day isn't great for your body and over time can lead to muscle tension, dysfunction and pain.</p>
+                </div>
+                <div class="feature-item">
+                    <p>SitApp monitors your posture in real time and reminds you to sit up straight when you start to slouch.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"I have actually been slouching much less because of SitApp."</p>
+                    <div class="testimonial-author">
+                        <img src="avatar1.jpg" alt="" class="author-avatar">
+                        <div>
+                            <strong>Tom</strong>
+                            <p>Tech Lead</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"It's great to have something to remind me about my posture, it's just so helpful!"</p>
+                    <div class="testimonial-author">
+                        <img src="avatar2.jpg" alt="" class="author-avatar">
+                        <div>
+                            <strong>Cathy</strong>
+                            <p>Marketing Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"SitApp is such a great solution to a problem we all face in our daily lives."</p>
+                    <div class="testimonial-author">
+                        <img src="avatar3.jpg" alt="" class="author-avatar">
+                        <div>
+                            <strong>Porteet</strong>
+                            <p>UX Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="faq-item">
+                <h3>How does SitApp work?</h3>
+                <div class="faq-content">
+                    <p>SitApp uses your device's camera to monitor your posture in real-time. When it detects that you're slouching, it sends a gentle reminder notification to help you maintain better posture. The app runs in the background and doesn't store any video data.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>How much does SitApp cost?</h3>
+                <div class="faq-content">
+                    <p>SitApp is completely FREE! We believe good posture should be accessible to everyone. There are no hidden fees or premium features - everything is included in the free version.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Is SitApp secure?</h3>
+                <div class="faq-content">
+                    <p>Yes, SitApp is designed with privacy in mind. All posture processing happens locally on your device - no video or image data is ever sent to our servers. The app works offline and doesn't require an internet connection.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Does SitApp work if I have a standing desk?</h3>
+                <div class="faq-content">
+                    <p>Yes! SitApp can monitor your posture whether you're sitting or standing. It adapts to your desk setup and can help you maintain proper alignment in both positions.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle the clicked item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
