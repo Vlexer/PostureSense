@@ -129,7 +129,7 @@ def summarize_posture_data():
                     data["good_posture_time"] += time_diff
                     data["dates"][current_date]["good_posture"] += time_diff
                 else:
-                    data["bad_posture_time"] += time_diff
+                    data["bad_posture_time"] += time_diff   
                     data["dates"][current_date]["bad_posture"] += time_diff
 
             last_timestamp = current_timestamp

@@ -76,7 +76,7 @@ def run_app(user_info):
 
         stats_window = tk.Toplevel()
         stats_window.title("Posture Analytics Dashboard")
-        stats_window.geometry("1000x800")
+        stats_window.geometry("1920x1080")
         
         # Configure style
         style = ttk.Style()
@@ -124,7 +124,7 @@ def run_app(user_info):
             
             step()
         
-        def animate_value(label, target_value, prefix="", suffix="", steps=50, duration=1000):
+        def animate_value(label, target_value, prefix="", suffix="", steps=50, duration=500):
             current = 0
             step_size = target_value / steps
             step_duration = duration / steps
@@ -451,31 +451,31 @@ def run_app(user_info):
         TEXT_COLOR = "#FFFFFF"     # White
         SHADOW_COLOR = "#00000010" # Transparent black
 
-        def on_enter(e):
-            # Animate button on hover
-            button.configure(
-                fg_color=HOVER_COLOR,
-                border_width=0,
-                scale=1.02  # Slight scale up effect
-            )
-            # Update shadow
-            shadow_label.configure(fg_color=SHADOW_COLOR)
+        # def on_enter(e):
+        #     # Animate button on hover
+        #     button.configure(
+        #         fg_color=HOVER_COLOR,
+        #         border_width=0,
+        #         scale=1.02  # Slight scale up effect
+        #     )
+        #     # Update shadow
+        #     shadow_label.configure(fg_color=SHADOW_COLOR)
             
-        def on_leave(e):
-            # Restore original state
-            button.configure(
-                fg_color=PRIMARY_COLOR,
-                border_width=0,
-                scale=1.0
-            )
-            # Reset shadow
-            shadow_label.configure(fg_color="transparent")
+        # def on_leave(e):
+        #     # Restore original state
+        #     button.configure(
+        #         fg_color=PRIMARY_COLOR,
+        #         border_width=0,
+        #         scale=1.0
+        #     )
+        #     # Reset shadow
+        #     shadow_label.configure(fg_color="transparent")
 
-        def on_click(e):
-            # Click animation
-            button.configure(scale=0.98)
-            parent.after(100, lambda: button.configure(scale=1.0))
-            command()
+        # def on_click(e):
+        #     # Click animation
+        #     button.configure(scale=0.98)
+        #     parent.after(100, lambda: button.configure(scale=1.0))
+        #     command()
 
         # Create shadow effect
         shadow_label = customtkinter.CTkLabel(
@@ -519,9 +519,9 @@ def run_app(user_info):
         button.pack(fill="x", padx=5, pady=5)
         
         # Bind hover and click events
-        button.bind("<Enter>", on_enter)
-        button.bind("<Leave>", on_leave)
-        button.bind("<Button-1>", on_click)
+        # button.bind("<Enter>", on_enter)
+        # button.bind("<Leave>", on_leave)
+        # button.bind("<Button-1>", on_click)
         
         return button_frame
     def create_button_panel(parent):
